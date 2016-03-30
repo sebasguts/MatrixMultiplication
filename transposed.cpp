@@ -1,4 +1,5 @@
 #include<iostream>
+#include<ctime>
 
 using namespace std;
 
@@ -57,11 +58,13 @@ int main(){
   for(int i=0;i<matrix_size;i++)
     for(int j=0;j<matrix_size;j++)
       matrix_b[i][j] = static_cast<double>(matrix_size)/(i*j);
-    
-//   matrix_mult_1( matrix_a, matrix_b, matrix_c );
+  
+  clock_t start = clock();
   matrix_mult_2( matrix_a, matrix_b, matrix_c );
+  double elapsedTime = static_cast<double>(clock() - start) / CLOCKS_PER_SEC;
   
   cout << matrix_c[2][5] << endl;
+  cout << "Elapsed time: " << elapsedTime << endl;
   
   return 0;
   
